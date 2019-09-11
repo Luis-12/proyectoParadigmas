@@ -14,12 +14,10 @@ public class PersonaService {
     @Autowired //se instancia el objeto
     private PersonaRepository repository;
 
-    @Autowired
-    private PersonaRepository personaRepository;
 
     public List<Persona> getAllPersonas() {
         List<Persona> list = new ArrayList<Persona>();
-        personaRepository.findAll().forEach(e -> list.add(e));
+        repository.findAll().forEach(e -> list.add(e));
         return list;
     }
 

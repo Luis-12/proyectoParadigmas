@@ -6,27 +6,32 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="Persona")
+@Table(name="persona")
 public class Persona implements Serializable {
     @Id
-    private Long id;//hola
+    private int id_persona;//hola
     private String nombre;
-    private String apellido;
+    private String correo;
+    private String telefono;
+    private String centro_trabajo;
+
+    public Persona(int id_perosna, String nombre, String correo, String telefono, String centro_trabajo) {
+        this.id_persona = id_perosna;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.centro_trabajo = centro_trabajo;
+    }
 
     public Persona() {
-        this.id=new Long(0);
-        this.nombre="";
-        this.apellido="";
     }
 
-
-
-    public long getId() {
-        return id;
+    public int getId_persona() {
+        return id_persona;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
     public String getNombre() {
@@ -37,20 +42,27 @@ public class Persona implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                '}';
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getCentro_trabajo() {
+        return centro_trabajo;
+    }
+
+    public void setCentro_trabajo(String centro_trabajo) {
+        this.centro_trabajo = centro_trabajo;
     }
 }

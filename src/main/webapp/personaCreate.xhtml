@@ -18,7 +18,7 @@
         <h:panelGrid columns="2" cellpadding="5">
             <p:outputLabel value="Nombre:" for="nombre"/>
             <p:inputText id="nombre" value="#{personaBean.persona.nombre}"/>
-            <p:outputLabel value="Coreo:" for="correo"/>
+            <p:outputLabel value="Coreo:" />
             <p:inputText id="apellido" value="#{personaBean.persona.correo}"/>
         </h:panelGrid>
         <p:commandButton value="Guardar" id="ajax" update="msgs" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />

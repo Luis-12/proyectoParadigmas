@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -21,8 +20,16 @@
                 <h:outputText value="#{persona.nombre}" />
             </p:column>
 
-            <p:column headerText="Apellido">
+            <p:column headerText="Correo">
                 <h:outputText value="#{persona.correo}" />
+            </p:column>
+
+            <p:column headerText="Telefono">
+                <h:outputText value="#{persona.telefono}" />
+            </p:column>
+
+            <p:column headerText="Centro de trabajo">
+                <h:outputText value="#{persona.centro_trabajo}" />
             </p:column>
 
 

@@ -4,7 +4,6 @@ import cr.ac.una.entities.Persona;
 import cr.ac.una.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import java.util.List;
@@ -16,8 +15,6 @@ public class PersonaBean {
     @Autowired
     PersonaService personaService;
     private Persona persona = new Persona();
-
-
     private List<Persona> personas;
 
     @PostConstruct

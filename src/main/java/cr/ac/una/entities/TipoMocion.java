@@ -1,9 +1,11 @@
 package cr.ac.una.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
+@Table(name="tipoMocion")
 public class TipoMocion implements Serializable {
     @Id
     private int id_tipo_mocion;

@@ -10,7 +10,7 @@
 </h:head>
 <h:body>
     <h1>Lista de personas</h1>
-    <h:form>
+    <h:form >
         <p:dataTable var="persona" id="tablaPersona" value="#{personaBean.personas}">
             <p:column headerText="Id">
                 <h:outputText value="#{persona.id_persona}" id="id"/>
@@ -38,12 +38,34 @@
                     <f:param name="PersonaId" value="#{persona.id_persona}"/>
                 </p:commandButton>
 
-                <p:commandButton action="personaUpdate?faces-redirect=true" value="Actualizar" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                <p:commandButton  value="Actualizar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
                     <f:setPropertyActionListener target="#{personaBean.persona}" value="#{persona}"/>
                 </p:commandButton>
             </p:column>
         </p:dataTable></h:form>
     <p:linkButton outcome="personaCreate" value="Crear personas" style="margin-right:20px;"/>
+
+    <p:dialog id="dlgE" header="Modificar Persona" showEffect="explode" hideEffect="explode"
+     widgetVar="dlg" modal="true" resizable="false" minWidth="200">
+        <h:form id="registrationForm" >
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Nombre:" for="nombre"/>
+            <p:inputText id="nombre" readonly="true" value="#{personaBean.persona.nombre}"/>
+
+            <p:outputLabel value="Coreo:" />
+            <p:inputText id="correo" value="#{personaBean.persona.correo}"/>
+
+            <p:outputLabel value="Telefono:" />
+            <p:inputText id="telefono" value="#{personaBean.persona.telefono}"/>
+
+            <p:outputLabel value="Centro de Trabajo:" />
+            <p:inputText id="centro_trabajo" value="#{personaBean.persona.centro_trabajo}"/>
+
+        </h:panelGrid>
+        <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaPersona)"  action="#{personaBean.create}"
+           oncomplete="PF('dlg').hide();"   style="margin-right:20px;" styleClass="ui-priority-primary"/>
+        </h:form>
+    </p:dialog>
 
 
 </h:body>

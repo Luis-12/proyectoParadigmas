@@ -13,11 +13,11 @@
     <h:form>
         <p:dataTable var="tipo" id="tablaTipoMocion" value="#{tipoBean.tipos}">
             <p:column headerText="Id">
-                <h:outputText value="#{tipo.id_tipo_mocion}" id="id_tipo_mocion"/>
+                <h:outputText value="#{tipoMocion.id_tipo_mocion}" id="id_tipo_mocion"/>
             </p:column>
 
             <p:column headerText="Descripcion">
-                <h:outputText value="#{tipo.descripcion}" />
+                <h:outputText value="#{tipoMocion.descripcion}" />
             </p:column>
 
 

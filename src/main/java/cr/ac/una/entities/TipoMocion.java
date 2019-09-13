@@ -5,7 +5,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="tipoMocion")
+@Table(name="tipo_mocion")
 public class TipoMocion implements Serializable {
     @Id
     private int id_tipo_mocion;

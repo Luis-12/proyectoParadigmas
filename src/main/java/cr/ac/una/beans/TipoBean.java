@@ -2,15 +2,18 @@ package cr.ac.una.beans;
 import cr.ac.una.entities.TipoMocion;
 import cr.ac.una.services.TipoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
 import java.util.List;
 
+@Component
 public class TipoBean {
 
     @Autowired
     TipoService tipoService;
-    private TipoMocion tipo = new TipoMocion();
+    private TipoMocion tipoMocion=new TipoMocion();
     private List<TipoMocion> tipos;
 
     @PostConstruct
@@ -20,10 +23,10 @@ public class TipoBean {
     }
 
     public TipoMocion getTipoMocion() {
-        return tipo;
+        return tipoMocion;
     }
     public void setTipoMocion(TipoMocion tipo) {
-        this.tipo = tipo;
+        this.tipoMocion = tipo;
     }
     public List<TipoMocion> getTipos() {
         return tipos;
@@ -33,7 +36,7 @@ public class TipoBean {
     }
 
     public void create() {
-        tipoService.createTipoMocion(tipo);
+        tipoService.createTipoMocion(tipoMocion);
         tipos = tipoService.getAllTipos();
     }
 

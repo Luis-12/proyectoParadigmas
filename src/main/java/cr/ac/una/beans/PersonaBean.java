@@ -42,6 +42,7 @@ public class PersonaBean {
     public void create() {
         personaService.createPersona(persona);
         personas = personaService.getAllPersonas();
+        persona=null;
     }
 
     public void delete()

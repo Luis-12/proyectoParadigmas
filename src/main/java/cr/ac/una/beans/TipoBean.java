@@ -38,6 +38,7 @@ public class TipoBean {
     public void create() {
         tipoService.createTipoMocion(tipoMocion);
         tipos = tipoService.getAllTipos();
+        tipoMocion=null;
     }
 
     public void delete()

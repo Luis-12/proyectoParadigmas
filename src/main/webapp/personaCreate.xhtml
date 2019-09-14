@@ -15,7 +15,7 @@
     <h:form id="registrationForm" >
         <p:growl id="msgs" showDetail="true"/>
 
-        <h:panelGrid columns="2" cellpadding="5">
+        <h:panelGrid columns="2" cellpadding="5" id="pal">
             <p:outputLabel value="Nombre:" for="nombre"/>
             <p:inputText id="nombre" value="#{personaBean.persona.nombre}"/>
 
@@ -29,7 +29,7 @@
             <p:inputText id="centro_trabajo" value="#{personaBean.persona.centro_trabajo}"/>
 
         </h:panelGrid>
-        <p:commandButton value="Guardar" id="ajax" update="msgs" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:commandButton value="Guardar" id="ajax" update="pal" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
 
         <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;">
             <p:ajax update="registrationForm" resetValues="true" />

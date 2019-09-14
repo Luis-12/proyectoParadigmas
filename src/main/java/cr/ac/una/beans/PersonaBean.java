@@ -5,6 +5,7 @@ import cr.ac.una.services.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import java.util.List;
 
@@ -42,6 +43,14 @@ public class PersonaBean {
     public void create() {
         personaService.createPersona(persona);
         personas = personaService.getAllPersonas();
+        addMessage("Aviso", "Registro insertado correctamente.");
+        persona=null;
+    }
+
+    public void update() {
+        personaService.createPersona(persona);
+        personas = personaService.getAllPersonas();
+        addMessage("Aviso", "Registro modificado correctamente.");
         persona=null;
     }
 
@@ -50,6 +59,12 @@ public class PersonaBean {
         Integer id=new Integer(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("PersonaId"));
         personaService.deletePersona(id);
         personas=personaService.getAllPersonas();
+        addMessage("Aviso", "Registro eliminado correctamente.");
+    }
+
+    public void addMessage(String summary, String detail) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
 }

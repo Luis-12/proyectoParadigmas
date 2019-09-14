@@ -29,11 +29,9 @@
             <p:inputText id="centro_trabajo" value="#{personaBean.persona.centro_trabajo}"/>
 
         </h:panelGrid>
-        <p:commandButton value="Guardar" id="ajax" update="pal" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+        <p:commandButton value="Guardar" id="ajax" update="pal,msgs" action="#{personaBean.create}" style="margin-right:20px;" styleClass="ui-priority-primary" />
 
-        <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;">
-            <p:ajax update="registrationForm" resetValues="true" />
-        </p:linkButton>
+        <p:linkButton outcome="personaList" value="Lista de personas" style="margin-right:20px;"/>
 
     </h:form>
 </h:body>

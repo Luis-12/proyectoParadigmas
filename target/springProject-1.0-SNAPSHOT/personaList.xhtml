@@ -11,7 +11,8 @@
 <h:body>
     <h1>Lista de personas</h1>
     <h:form >
-        <p:dataTable var="persona" id="tablaPersona" value="#{personaBean.personas}">
+        <p:growl id="msgs" showDetail="true"/>
+        <p:dataTable var="persona" id="tablaPersona" value="#{personaBean.personas}" scrollable="true" scrollHeight="450">
             <p:column headerText="Id">
                 <h:outputText value="#{persona.id_persona}" id="id"/>
             </p:column>
@@ -34,11 +35,19 @@
 
 
             <p:column headerText="Acciones">
-                <p:commandButton value="Eliminar" id="eliminar" update="tablaPersona" action="#{personaBean.delete}">
+
+                <p:commandButton icon="fa fa-fw fa-remove" title="Eliminar" id="eliminar" action="#{personaBean.delete}" update="tablaPersona" >
                     <f:param name="PersonaId" value="#{persona.id_persona}"/>
+                    <p:confirm header="Confirmación" message="¿Está seguro de eliminar este registro?"
+                               icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
 
-                <p:commandButton  value="Actualizar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
+                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                    <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"  />
+                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+                </p:confirmDialog>
+
+                <p:commandButton  icon="fa fa-fw fa-edit" title="Modificar" oncomplete="PF('dlg').show()" update="dlgE" style="margin-right:20px;" styleClass="ui-priority-primary" >
                     <f:setPropertyActionListener target="#{personaBean.persona}" value="#{persona}"/>
                 </p:commandButton>
             </p:column>
@@ -49,6 +58,9 @@
      widgetVar="dlg" modal="true" resizable="false" minWidth="200">
         <h:form id="registrationForm" >
         <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel value="Nombre:" for="id_persona"/>
+            <p:inputText id="id_persona" readonly="true" value="#{personaBean.persona.id_persona}"/>
+
             <p:outputLabel value="Nombre:" for="nombre"/>
             <p:inputText id="nombre"  value="#{personaBean.persona.nombre}"/>
 
@@ -62,7 +74,7 @@
             <p:inputText id="centro_trabajo" value="#{personaBean.persona.centro_trabajo}"/>
 
         </h:panelGrid>
-        <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaPersona)"  action="#{personaBean.create}"
+        <p:commandButton value="Modificar" id="ajax" update="@(id$=tablaPersona)"  action="#{personaBean.update}"
            oncomplete="PF('dlg').hide();"   style="margin-right:20px;" styleClass="ui-priority-primary"/>
         </h:form>
     </p:dialog>

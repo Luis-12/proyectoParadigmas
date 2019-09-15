@@ -41,10 +41,15 @@ public class PersonaBean {
     }
 
     public void create() {
-        personaService.createPersona(persona);
-        personas = personaService.getAllPersonas();
-        addMessage("Aviso", "Registro insertado correctamente.");
-        persona=null;
+        try{
+            personaService.createPersona(persona);
+            personas = personaService.getAllPersonas();
+            addMessage("Aviso", "Registro insertado correctamente.");
+        }catch (Exception e){}
+        finally {
+            persona=new Persona();
+        }
+
     }
 
     public void update() {

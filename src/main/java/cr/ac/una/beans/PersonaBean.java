@@ -72,4 +72,17 @@ public class PersonaBean {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+    public Persona obtienePersonas(Integer id)
+    {
+        if(id == null){
+            throw new IllegalArgumentException("no se provee el id");
+        }
+        for (Persona p : personas){
+            if(id.equals(p.getId_persona())){
+                return p;
+            }
+        }
+        return null;
+    }
+
 }

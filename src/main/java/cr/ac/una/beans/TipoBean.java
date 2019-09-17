@@ -1,4 +1,5 @@
 package cr.ac.una.beans;
+import cr.ac.una.entities.Persona;
 import cr.ac.una.entities.TipoMocion;
 import cr.ac.una.services.TipoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,19 @@ public class TipoBean {
         tipoService.deleteTipoMocion(id);
         tipos=tipoService.getAllTipos();
     }
+
+    public TipoMocion obtieneTipos(Integer id)
+    {
+        if(id == null){
+            throw new IllegalArgumentException("no se provee el id");
+        }
+        for (TipoMocion p : tipos){
+            if(id.equals(p.getId_tipo_mocion())){
+                return p;
+            }
+        }
+        return null;
+    }
+
 
 }

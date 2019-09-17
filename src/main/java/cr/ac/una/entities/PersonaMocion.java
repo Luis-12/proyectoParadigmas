@@ -1,9 +1,7 @@
 package cr.ac.una.entities;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -11,16 +9,18 @@ import java.io.Serializable;
 public class PersonaMocion implements Serializable {
     @Id
     private int id_persona_mocion;
-    private int persona;
-    private int mocion;
+    @OneToOne @JoinColumn(name="persona", nullable = false)
+    private Persona persona;
+    @OneToOne @JoinColumn(name="mocion", nullable = false)
+    private Mocion mocion;
 
-    public PersonaMocion(int id_persona_mocion, int persona, int mocion) {
+    public PersonaMocion() {
+    }
+
+    public PersonaMocion(int id_persona_mocion, Persona persona, Mocion mocion) {
         this.id_persona_mocion = id_persona_mocion;
         this.persona = persona;
         this.mocion = mocion;
-    }
-
-    public PersonaMocion() {
     }
 
     public int getId_persona_mocion() {
@@ -31,20 +31,29 @@ public class PersonaMocion implements Serializable {
         this.id_persona_mocion = id_persona_mocion;
     }
 
-    public int getPersona() {
+    public Persona getPersona() {
         return persona;
     }
 
-    public void setPersona(int persona) {
+    public void setPersona(Persona persona) {
         this.persona = persona;
     }
 
-    public int getMocion() {
+    public Mocion getMocion() {
         return mocion;
     }
 
-    public void setMocion(int mocion) {
+    public void setMocion(Mocion mocion) {
         this.mocion = mocion;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonaMocion{" +
+                "id_persona_mocion=" + id_persona_mocion +
+                ", persona=" + persona +
+                ", mocion=" + mocion +
+                '}';
     }
 }
 

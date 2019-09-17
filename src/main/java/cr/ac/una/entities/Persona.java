@@ -2,8 +2,10 @@ package cr.ac.una.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name="persona")
@@ -14,9 +16,12 @@ public class Persona implements Serializable {
     private String correo;
     private String telefono;
     private String centro_trabajo;
+    @OneToMany(mappedBy = "persona")
+    private Set<PersonaMocion> personaMocio;
 
-    public Persona(int id_perosna, String nombre, String correo, String telefono, String centro_trabajo) {
-        this.id_persona = id_perosna;
+
+    public Persona(int id_persona, String nombre, String correo, String telefono, String centro_trabajo) {
+        this.id_persona = id_persona;
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
@@ -64,5 +69,16 @@ public class Persona implements Serializable {
 
     public void setCentro_trabajo(String centro_trabajo) {
         this.centro_trabajo = centro_trabajo;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "id_persona=" + id_persona +
+                ", nombre='" + nombre + '\'' +
+                ", correo='" + correo + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", centro_trabajo='" + centro_trabajo + '\'' +
+                '}';
     }
 }

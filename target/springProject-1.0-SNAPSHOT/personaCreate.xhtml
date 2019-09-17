@@ -20,22 +20,20 @@
             <p:inputText id="nombre" required="true" requiredMessage="Nombre requerido" value="#{personaBean.persona.nombre}"/>
             <p:message for="nombre" />
 
-            <p:outputLabel value="Coreo:" for="email" indicateRequired="true" />
+            <p:outputLabel value="Coreo:" for="email"  />
             <p:inputText id="email" required="true"  requiredMessage="Correo requerido." validatorMessage="Formato invalido" value="#{personaBean.persona.correo}">
                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
             </p:inputText>
             <p:message for="email" />
 
-            <p:outputLabel value="Telefono:" for="telefono" indicateRequired="true"/>
+            <p:outputLabel value="Telefono:" for="telefono" />
             <p:inputText id="telefono" required="true"  requiredMessage="Telefono requerido" value="#{personaBean.persona.telefono}" validatorMessage="Solo numeros,con 8 digitos" >
                 <f:validateRegex pattern="[0-9]{8}" />
             </p:inputText>
-            <p:message for="telefono" />
 
-            <p:outputLabel value="Centro de Trabajo:" for="centro_trabajo" indicateRequired="true"/>
-            <p:inputText id="centro_trabajo" required="true" requiredMessage="Centro de trabaja requerido" validatorMessage="Solo letras" value="#{personaBean.persona.centro_trabajo}">
-                <f:validateRegex pattern="[a-z]" />
-            </p:inputText>
+            <p:message for="telefono" />
+            <p:outputLabel value="Centro de Trabajo:" for="centro_trabajo" />
+            <p:inputText id="centro_trabajo" required="true" requiredMessage="Centro de trabaja requerido"  value="#{personaBean.persona.centro_trabajo}"/>
             <p:message for="centro_trabajo" />
 
         </h:panelGrid>

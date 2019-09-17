@@ -30,8 +30,8 @@
             <p:inputText id="telefono" required="true"  requiredMessage="Telefono requerido" value="#{personaBean.persona.telefono}" validatorMessage="Solo numeros,con 8 digitos" >
                 <f:validateRegex pattern="[0-9]{8}" />
             </p:inputText>
-            <p:message for="telefono" />
 
+            <p:message for="telefono" />
             <p:outputLabel value="Centro de Trabajo:" for="centro_trabajo" indicateRequired="true"/>
             <p:inputText id="centro_trabajo" required="true" requiredMessage="Centro de trabaja requerido"  value="#{personaBean.persona.centro_trabajo}"/>
             <p:message for="centro_trabajo" />

@@ -13,23 +13,16 @@
     <h:form>
         <p:dataTable var="tipo" id="tablaTipoMocion" value="#{tipoBean.tipos}">
             <p:column headerText="Id">
-                <h:outputText value="#{tipoMocion.id_tipo_mocion}" id="id_tipo_mocion"/>
+                <h:outputText value="#{tipo.id_tipo_mocion}" id="id_tipo_mocion"/>
             </p:column>
 
             <p:column headerText="Descripcion">
-                <h:outputText value="#{tipoMocion.descripcion}" />
+                <h:outputText value="#{tipo.descripcion}" />
             </p:column>
 
-
-            <p:column headerText="Acciones">
-                <p:commandButton value="Eliminar" id="eliminar" update="tablaTipoMocion" action="#{tipoBean.delete}">
-                    <f:param name="TipoMocionId" value="#{tipo.id_persona}"/>
-                </p:commandButton>
-
-            </p:column>
-        </p:dataTable></h:form>
+        </p:dataTable>
+    </h:form>
     <p:linkButton outcome="tipoMocionCreate" value="Crear Tipo de Mocion" style="margin-right:20px;"/>
-
 
 </h:body>
 </html>

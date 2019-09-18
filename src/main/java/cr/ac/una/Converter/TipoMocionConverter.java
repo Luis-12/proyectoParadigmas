@@ -13,20 +13,19 @@ import javax.faces.convert.FacesConverter;
 public class TipoMocionConverter implements Converter {
 
     @Override
-    public TipoMocion getAsObject(FacesContext facesContext, UIComponent uiComponent, String idPuesto) {
+    public TipoMocion getAsObject(FacesContext facesContext, UIComponent uiComponent, String id) {
         ValueExpression vex = FacesContext.getCurrentInstance().getApplication().getExpressionFactory()
                 .createValueExpression(FacesContext.getCurrentInstance().getELContext(),
                         "#{tipoBean}", TipoBean.class);
 
         TipoBean tipos = (TipoBean) vex.getValue(FacesContext.getCurrentInstance().getELContext());
-        System.out.println(tipos.obtieneTipos(Integer.valueOf(idPuesto)).toString());
-        return tipos.obtieneTipos(Integer.valueOf(idPuesto));
+        return tipos.obtieneTipos(Integer.valueOf(id));
     }
 
     @Override
-    public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object tipo) {
+    public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object tipoMocion) {
         //((TipoMocion)tipoMocion).getID_TIPO_MOCION();
-        String idP = String.valueOf(((TipoMocion)tipo).getId_tipo_mocion());
+        String idP = String.valueOf(((TipoMocion)tipoMocion).getId_tipo_mocion());
         return idP;//.toString();
     }
 

@@ -8,31 +8,25 @@ import java.util.Set;
 public class Mocion {
     @Id
     private int id_mocion;
-    private int tipo;
     private Date fecha;
     private String texto;
-    @OneToOne @JoinColumn(name="tipo_mocion", nullable = false)
-    private TipoMocion tipomocion;
-    @OneToMany(mappedBy = "mocion")
-    private Set<PersonaMocion> personaM;
+    private int tipo;
+
+    @OneToOne
+    @JoinColumn(name="tipo_mocion", nullable = false)
+    private TipoMocion tipoMocion;
+
 
     public Mocion() {
     }
 
-    public Mocion(int id_mocion, int tipo, Date fecha, String texto, TipoMocion tipomocion) {
+
+    public Mocion(int id_mocion, Date fecha, String texto, int tipo, TipoMocion tipoMocion) {
         this.id_mocion = id_mocion;
-        this.tipo = tipo;
         this.fecha = fecha;
         this.texto = texto;
-        this.tipomocion = tipomocion;
-    }
-
-    public int getId_mocion() {
-        return id_mocion;
-    }
-
-    public void setId_mocion(int id_mocion) {
-        this.id_mocion = id_mocion;
+        this.tipo = tipo;
+        this.tipoMocion = tipoMocion;
     }
 
     public int getTipo() {
@@ -41,6 +35,14 @@ public class Mocion {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    public int getId_mocion() {
+        return id_mocion;
+    }
+
+    public void setId_mocion(int id_mocion) {
+        this.id_mocion = id_mocion;
     }
 
     public Date getFecha() {
@@ -59,22 +61,22 @@ public class Mocion {
         this.texto = texto;
     }
 
-    public TipoMocion getMocion() {
-        return tipomocion;
+    public TipoMocion getTipoMocion() {
+        return tipoMocion;
     }
 
-    public void setMocion(TipoMocion mocion) {
-        this.tipomocion = mocion;
+    public void setTipoMocion(TipoMocion tipoMocion) {
+        this.tipoMocion = tipoMocion;
     }
 
     @Override
     public String toString() {
         return "Mocion{" +
                 "id_mocion=" + id_mocion +
-                ", tipo=" + tipo +
                 ", fecha=" + fecha +
                 ", texto='" + texto + '\'' +
-                ", mocion=" + tipomocion +
+                ", tipo=" + tipo +
+                ", tipoMocion=" + tipoMocion +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package cr.ac.una.beans;
 import cr.ac.una.entities.Mocion;
 import cr.ac.una.entities.Persona;
 import cr.ac.una.entities.PersonaMocion;
+import cr.ac.una.entities.TipoMocion;
 import cr.ac.una.services.MocionService;
 import cr.ac.una.services.PersonaMocionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class MocionBean {
     MocionService MocionService;
     private Mocion mocion=new Mocion();
     private List<Mocion> mociones;
+    private TipoMocion tipoMocion=new TipoMocion();
+
+
 
     @PostConstruct
     public void init() {
@@ -29,8 +33,12 @@ public class MocionBean {
         return MocionService;
     }
 
-    public void setMocionService(MocionService mocionService) {
-        MocionService = mocionService;
+    public TipoMocion getTipoMocion() {
+        return tipoMocion;
+    }
+
+    public void setTipoMocion(TipoMocion tipoMocion) {
+        this.tipoMocion = tipoMocion;
     }
 
     public Mocion getMocion() {
@@ -50,9 +58,15 @@ public class MocionBean {
     }
 
     public void create() {
-        MocionService.createMocion(mocion);
-        mociones = MocionService.getAllMociones();
-        mociones=null;
+        try{
+            MocionService.createMocion(mocion);
+            mociones = MocionService.getAllMociones();
+        }catch (Exception e){}
+        finally {
+            mocion=new Mocion();
+        }
+
+
     }
 
     public void delete()

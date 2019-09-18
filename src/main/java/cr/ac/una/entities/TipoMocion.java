@@ -12,13 +12,9 @@ public class TipoMocion implements Serializable {
     @Id
     private int id_tipo_mocion;
     private String descripcion;
-    @OneToMany(mappedBy = "tipomocion")
-    private Set<Mocion> mocion;
 
-    public TipoMocion(int id_tipo_mocion, String descripcion) {
-        this.id_tipo_mocion = id_tipo_mocion;
-        this.descripcion = descripcion;
-    }
+    @OneToMany(mappedBy = "tipoMocion")
+    private Set<Mocion> mociones;
 
     public TipoMocion() { }
 
@@ -43,7 +39,6 @@ public class TipoMocion implements Serializable {
         return "TipoMocion{" +
                 "id_tipo_mocion=" + id_tipo_mocion +
                 ", descripcion='" + descripcion + '\'' +
-                ", mocion=" + mocion +
                 '}';
     }
 }

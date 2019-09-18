@@ -24,6 +24,7 @@ public class MocionBean {
 
 
 
+
     @PostConstruct
     public void init() {
         mociones = MocionService.getAllMociones();

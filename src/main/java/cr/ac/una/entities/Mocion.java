@@ -11,6 +11,8 @@ public class Mocion {
     private Date fecha;
     private String texto;
     private int tipo;
+    @OneToMany(mappedBy = "mocion")
+    private Set<PersonaMocion> personaMocions ;
 
     @OneToOne
     @JoinColumn(name="tipo_mocion", nullable = false)

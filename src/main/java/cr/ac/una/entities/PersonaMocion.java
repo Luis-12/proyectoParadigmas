@@ -9,9 +9,13 @@ import java.io.Serializable;
 public class PersonaMocion implements Serializable {
     @Id
     private int id_persona_mocion;
-    @OneToOne @JoinColumn(name="persona", nullable = false)
+
+    @OneToOne
+    @JoinColumn(name="persona", nullable = false)
     private Persona persona;
-    @OneToOne @JoinColumn(name="mocion", nullable = false)
+
+    @OneToOne
+    @JoinColumn(name="mocion", nullable = false)
     private Mocion mocion;
 
     public PersonaMocion() {

@@ -1,5 +1,7 @@
 package cr.ac.una.beans;
 
+import cr.ac.una.entities.Mocion;
+import cr.ac.una.entities.Persona;
 import cr.ac.una.entities.PersonaMocion;
 import cr.ac.una.services.PersonaMocionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class PersonaMocionBean {
     @Autowired
     PersonaMocionService personaMocionService;
     private PersonaMocion personaMocion=new PersonaMocion();
+    private Mocion mocion=new Mocion();
+    private Persona persona=new Persona();
     private List<PersonaMocion> personasMocion;
 
     @PostConstruct
@@ -28,6 +32,22 @@ public class PersonaMocionBean {
 
     public void setPersonaMocionService(PersonaMocionService personaMocionService) {
         this.personaMocionService = personaMocionService;
+    }
+
+    public Mocion getMocion() {
+        return mocion;
+    }
+
+    public void setMocion(Mocion mocion) {
+        this.mocion = mocion;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     public PersonaMocion getPersonaMocion() {

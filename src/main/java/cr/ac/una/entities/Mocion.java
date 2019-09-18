@@ -12,19 +12,19 @@ public class Mocion {
     private Date fecha;
     private String texto;
     @OneToOne @JoinColumn(name="tipo_mocion", nullable = false)
-    private TipoMocion mocion;
+    private TipoMocion tipomocion;
     @OneToMany(mappedBy = "mocion")
     private Set<PersonaMocion> personaM;
 
     public Mocion() {
     }
 
-    public Mocion(int id_mocion, int tipo, Date fecha, String texto, TipoMocion mocion) {
+    public Mocion(int id_mocion, int tipo, Date fecha, String texto, TipoMocion tipomocion) {
         this.id_mocion = id_mocion;
         this.tipo = tipo;
         this.fecha = fecha;
         this.texto = texto;
-        this.mocion = mocion;
+        this.tipomocion = tipomocion;
     }
 
     public int getId_mocion() {
@@ -60,11 +60,11 @@ public class Mocion {
     }
 
     public TipoMocion getMocion() {
-        return mocion;
+        return tipomocion;
     }
 
     public void setMocion(TipoMocion mocion) {
-        this.mocion = mocion;
+        this.tipomocion = mocion;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class Mocion {
                 ", tipo=" + tipo +
                 ", fecha=" + fecha +
                 ", texto='" + texto + '\'' +
-                ", mocion=" + mocion +
+                ", mocion=" + tipomocion +
                 '}';
     }
 }
